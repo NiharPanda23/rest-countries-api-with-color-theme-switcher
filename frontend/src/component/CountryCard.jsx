@@ -1,19 +1,38 @@
-import React from 'react'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 
 const CountryCard = () => {
+
+  var [countries, setCountries] = useState([])
+
+  useEffect(()=> {
+    axios.get("http://localhost:4000/getAllCountries")
+    .then(function(countries) {
+      setCountries(countries.data)
+      console.log(countries);
+    })
+    .catch(err => console.log(err))
+    
+  }, []);
+  
+
   return (
-    <div className='w-[1400px] mx-auto'>
-        <div className='border w-60 h-80 rounded-md shadow-xl li'>
-            <div>
-                <img className='rounded-t-md' src="https://cdn.pixabay.com/photo/2012/04/10/23/03/india-26828_1280.png" alt="india" />
-            </div>
-            <div>
-                <h2 className='px-4 py-3 font-bold text-lg'>India</h2>
-                <p className='px-4 py-0 leading-7'>Population:</p>
-                <p className='px-4 py-0 leading-7'>Region:</p>
-                <p className='px-4 py-0 leading-7'>Capital:</p>
-            </div>
-        </div>
+    <div className='w-[1400px] mx-auto flex flex-col'>
+    {
+        countries.map(country =>{
+          <div className='border w-60 h-80 rounded-md shadow-xl mb-10'>
+              <div>
+                  <img className='rounded-t-md' src={country.flag} alt={country.name} />
+              </div>
+              <div>
+                  <h2 className='px-4 py-3 font-bold text-lg'>{country.name}</h2>
+                  <p className='px-4 py-0 leading-7'>Population:{country.population}</p>
+                  <p className='px-4 py-0 leading-7'>Region:{country.region}</p>
+                  <p className='px-4 py-0 leading-7'>Capital:{country.capital}</p>
+              </div>
+          </div>
+        })}
     </div>
   )
 }
