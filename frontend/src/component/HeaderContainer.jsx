@@ -2,10 +2,11 @@ import Filter from "./Filter"
 import Search from "./Search"
 
 
-const HeaderContainer = () => {
+
+const HeaderContainer = ({search}) => {
   return (
     <div className="flex justify-between">
-        <Search/>
+        <Search  mysearch={search}/>
         <Filter/>
     </div>
   )

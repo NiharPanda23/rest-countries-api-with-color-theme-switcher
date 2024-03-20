@@ -1,10 +1,14 @@
-import { IoIosSearch } from "react-icons/io";
+import search from "../assets/search-icon.svg"
 
-const Search = () => {
+const Search = ({mysearch}) => {
+
+  console.log(mysearch);
+
+
   return (
-    <div className="py-10 px-5 flex">
-        <button className=" p-3 shadow-xl"><IoIosSearch className="w-5 h-5"/></button>
-        <input className="bg-white border-none w-60 h-12 shadow-lg outline-none border-t-2 border px-2 ml-[-5px]" type="search" name="Search" id="Search" placeholder="Search for a country..."/>
+    <div className="w-[20rem] h-11 mt-10 py-2 px-4 border flex justify-between shadow-xl rounded">
+        <img className="w-4 h-4 mt-1 bg-white" src={search} alt="search" onClick={()=>{}}/>
+        <input onChange={()=>{}} className="outline-none w-64 placeholder:font-normal font-Nunito" type="search" name="Search" id="Search" placeholder="Search for a country..."/>
     </div>
   )
 }

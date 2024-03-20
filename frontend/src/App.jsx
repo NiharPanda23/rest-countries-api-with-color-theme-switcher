@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className='lg:w-[1440px] lg:mx-auto bg-[#fafafa)]'>
       <NavBar/>
-      <HeaderContainer />
+      <HeaderContainer search={countries} />
       <CountryCard  data={countries}/>
     </div>
   )
