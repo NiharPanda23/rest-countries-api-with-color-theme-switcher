@@ -25,7 +25,7 @@ app.get('/getAllCountries', async(req, res)=> {
 
 app.get('/getCountryByName', async(req, res) => {
     try {
-        let country = await countryModel.findOne({name: "India"});
+        let country = await countryModel.findOne({name: req.body.name});
         res.send(country);
     }catch (err) {
         res.status(500).send(err);
@@ -34,7 +34,7 @@ app.get('/getCountryByName', async(req, res) => {
 
 app.get('/getCountriesByRegion', async(req, res) =>{
     try {
-        let countries = await countryModel.find({region: req.body});
+        let countries = await countryModel.find({region: req.body.region});
         res.send(countries);
     }
     catch (err) {

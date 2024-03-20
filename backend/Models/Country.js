@@ -3,22 +3,40 @@ mongoose.connect("mongodb://127.0.0.1:27017/countryapi");
 
 const CountrySchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  name: { type: String, required: true },
+  name: { 
+    type: String, 
+    required: true 
+  },
   topLevelDomain: [{ type: String }],
-  alpha2Code: { type: String, required: true },
-  alpha3Code: { type: String, required: true },
+  alpha2Code: { 
+    type: String, 
+    required: true 
+  },
+  alpha3Code: { 
+    type: String, 
+    required: true 
+  },
   callingCodes: [{ type: String }],
-  capital: { type: String, required: true },
+  capital: { 
+    type: String, 
+    required: true 
+  },
   altSpellings: [{ type: String }],
   subregion: { type: String },
-  region: { type: String, required: true },
+  region: { 
+    type: String, 
+    required: true 
+  },
   population: { type: Number },
   latlng: [{ type: Number }],
   demonym: { type: String },
   area: { type: Number },
   timezones: [{ type: String }],
   borders: [{ type: String }],
-  nativeName: { type: String, required: true },
+  nativeName: { 
+    type: String, 
+    required: true 
+  },
   numericCode: { type: String },
   flags: {
     svg: { type: String },
