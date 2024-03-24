@@ -23,18 +23,24 @@ app.get('/getAllCountries', async(req, res)=> {
     }
 })
 
-app.get('/getCountryByName', async(req, res) => {
+app.get('/getCountryByName/:keyword', async(req, res) => {
     try {
-        let country = await countryModel.findOne({name: req.body.name});
+        let country = await countryModel.find({
+            "$or": [
+                {name:{$regex: req.params.keyword}}
+            ]
+        });
         res.send(country);
     }catch (err) {
         res.status(500).send(err);
     }
 });
 
-app.get('/getCountriesByRegion', async(req, res) =>{
+app.get('/getCountriesByRegion/:keyword', async(req, res) =>{
     try {
-        let countries = await countryModel.find({region: req.body.region});
+        let countries = await countryModel.find({
+            "$or":[{region:{$regex: req.params.keyword}}]
+        });
         res.send(countries);
     }
     catch (err) {

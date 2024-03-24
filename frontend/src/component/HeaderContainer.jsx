@@ -3,10 +3,11 @@ import Search from "./Search"
 
 
 
-const HeaderContainer = ({search}) => {
+const HeaderContainer = (props) => {
+
   return (
     <div className="flex justify-between">
-        <Search  mysearch={search}/>
+        <Search  mySearch={props}/>
         <Filter/>
     </div>
   )
