@@ -1,16 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-
-
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        Nunito : ["Nunito Sans", "sans-serif"],
-        Haviland : ["Mr De Haviland", "cursive"]
+        Nunito : ["Nunito Sans", "sans-serif"]
       }
     },
   },
