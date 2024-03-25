@@ -2,10 +2,10 @@
 const CountryCard = ({data}) => {  
   
   return (
-    <div className='grid gap-x-[5.3rem] grid-cols-4 mx-auto'>
+    <div className='grid gap-x-[5.6rem] grid-cols-4 mx-auto px-2 dark:bg-Dark_200-0'>
     {
       data.map((item)=>
-        <div key={item.name} className='border w-72 h-96 rounded-md shadow-xl mb-10 bg-white gap-10  mt-10 cursor-pointer hover:shadow-2xl'>
+        <div key={item.name} className='border w-72 h-96 rounded-md shadow-xl mb-10 bg-white gap-10  mt-10 cursor-pointer hover:shadow-2xl dark:bg-Dark_100-0 dark:text-Light_200-0 dark:border dark:border-Dark_200-0 dark:shadow-lg dark:hover:shadow-2xl dark:shadow-slate-700 dark:hover:shadow-slate-700'>
             <div className="w-72 h-1/2">
                 <img className='rounded-t-md object-cover w-[99.5%] h-[100%]' src={item.flag}  alt={item.name}/>
             </div>
