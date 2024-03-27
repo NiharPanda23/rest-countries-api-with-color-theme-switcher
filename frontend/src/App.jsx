@@ -5,9 +5,13 @@ import axios from "axios";
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
 
+
 const App = () => {
   const [countries, setCountries] = useState({});
   const [isActive, setIsActive] = useState(false);
+  const [h3value, setH3value] = useState("");
+
+
 
   useEffect(() => {
     axios
@@ -23,14 +27,20 @@ const App = () => {
     axios
       .get(`http://localhost:4000/getCountryByName/${keyword}`)
       .then(function (response) {
-        if (!response) {
-          setCountries(countries.data);
-        } else {
           setCountries(response.data);
-        }
       })
       .catch((err) => console.log(err));
   };
+
+  const dropDownClickHandler = (e) => {
+    const dropDownValue = e.target.textContent;
+    axios.get(`http://localhost:4000/getCountriesByRegion/${dropDownValue}`)
+    .then((response) => {
+      setCountries(response.data) 
+    })
+  }
+
+  console.log(h3value);
 
   return (
     <div className="w-full h-full bg-Light_100-0 dark:bg-Dark_200-0">
@@ -61,16 +71,24 @@ const App = () => {
                 <MdKeyboardArrowDown className="mt-1" />
               )}
             </button>
-            {isActive && <div className="bg-white border absolute top-12 flex flex-col items-start rounded-bl rounded-br px-3 py-2 w-60 right-0 left-0 hover:shadow-xl dark:bg-Dark_100-0 dark:border-Dark_200-0">
-            {
-              countries.filter((country, i) => countries.findIndex((c) => c.region === country.region) === i)
-                .map((country, i) => (
-                  <div key={i} className="py-1 hover:bg-blue-100 w-full px-1 rounded">
-                    <h3 className="dark:hover:text-Dark_300-0">{country.region}</h3>
+            {isActive && 
+              <div className="bg-white border absolute top-12 flex flex-col items-start rounded-bl rounded-br px-3 py-2 w-60 right-0 left-0 hover:shadow-xl dark:bg-Dark_100-0 dark:border-Dark_200-0">
+                  <div className="py-1 hover:bg-blue-100 w-full px-1 rounded">
+                    <h3  onClick={dropDownClickHandler} id="dropDown" className="dark:hover:text-Dark_300-0">Asia</h3>
                   </div>
-                ))
-            }
-            </div>}
+                  <div className="py-1 hover:bg-blue-100 w-full px-1 rounded">
+                    <h3  onClick={dropDownClickHandler} id="dropDown" className="dark:hover:text-Dark_300-0">Europe</h3>
+                  </div>
+                  <div className="py-1 hover:bg-blue-100 w-full px-1 rounded">
+                    <h3  onClick={dropDownClickHandler} id="dropDown" className="dark:hover:text-Dark_300-0">Africa</h3>
+                  </div>
+                  <div className="py-1 hover:bg-blue-100 w-full px-1 rounded">
+                  <h3  onClick={dropDownClickHandler} id="dropDown" className="dark:hover:text-Dark_300-0">Oceania</h3>
+                  </div>
+                  <div className="py-1 hover:bg-blue-100 w-full px-1 rounded">
+                  <h3  onClick={dropDownClickHandler} id="dropDown" className="dark:hover:text-Dark_300-0">Antarctic Ocean</h3>
+                  </div>
+              </div>}
           </div>
         </div>
         <CountryCard data={countries}/>
@@ -79,4 +97,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App;`  `
