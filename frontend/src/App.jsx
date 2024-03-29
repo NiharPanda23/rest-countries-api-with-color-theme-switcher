@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 const App = () => {
   const [countries, setCountries] = useState({});
   const [isActive, setIsActive] = useState(false);
-  const [h3value, setH3value] = useState("");
 
 
 
@@ -40,7 +39,6 @@ const App = () => {
     })
   }
 
-  console.log(h3value);
 
   return (
     <div className="w-full h-full bg-Light_100-0 dark:bg-Dark_200-0">

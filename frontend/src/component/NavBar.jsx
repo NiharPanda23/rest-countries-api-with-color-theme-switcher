@@ -30,7 +30,7 @@ const NavBar = () => {
       <h1 className="text-4xl font-bold font-Nunito">Where in the world?</h1>
       <div className="flex justify-between mt-2">
         <div onClick={handelIconChange}>
-          {icon === true ? <span><IoMdSunny className="w-6 h-6 cursor-pointer" onClick={handelThemeSwitcher}/></span> : <span><IoMdMoon className="w-6 h-6 cursor-pointer" onClick={handelThemeSwitcher}/></span>}
+          {icon === true ? <span><IoMdMoon className="w-6 h-6 cursor-pointer" onClick={handelThemeSwitcher}/></span> : <span><IoMdSunny className="w-6 h-6 cursor-pointer" onClick={handelThemeSwitcher}/></span>}
         </div>
         <div className="ml-4 text-[16px] font-Nunito">{icon === true ? <h3 className="text-[16px] font-Nunito">Dark Mode</h3> : <h3 className="text-[16px] font-Nunito">Light Mode</h3>}</div>
       </div>
