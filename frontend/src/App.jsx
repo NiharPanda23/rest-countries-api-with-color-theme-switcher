@@ -1,9 +1,11 @@
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import NavBar from "./component/NavBar";
+import { Routes , Route} from 'react-router-dom'
 import CountryCard from "./component/CountryCard";
 import axios from "axios";
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import Countryinfo from "./component/Countryinfo";
 
 
 const App = () => {
@@ -89,10 +91,13 @@ const App = () => {
               </div>}
           </div>
         </div>
-        <CountryCard data={countries}/>
+        <Routes>
+          <Route path="/" element={<CountryCard data={countries}/>} />
+          <Route path="/Countryinfo/:_id" element={<Countryinfo />}/>
+        </Routes>
       </div>
     </div>
   );
 };
 
-export default App;`  `
+export default App;
