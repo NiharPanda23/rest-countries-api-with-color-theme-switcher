@@ -48,4 +48,14 @@ app.get('/getCountriesByRegion/:keyword', async(req, res) =>{
     }
 });
 
+app.get('/getCountryById/:keyword', async(req, res) => {
+    try {
+        let country = await countryModel.find({_id: req.params.keyword});
+        res.send(country);
+    }
+    catch (err) {
+        res.status(500).send(err)
+    }
+})
+
 app.listen(4000,() => (console.log('Server running on port 4000')));
